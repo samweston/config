@@ -3,7 +3,7 @@
 :set cursorline " show cursor line
 :set spell
 
-":set number
+:set number
 
 "set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
 
