@@ -3,6 +3,9 @@
 :set cursorline " show cursor line
 :set spell
 
+" Auto write files when you leave the buffer
+set autowrite
+
 :set number
 
 "set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
@@ -77,6 +80,21 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " only for windows [give some path to store the line number info]
 "set viminfo='10,\"100,:20,%,nc:\\Winnt\\_viminfo
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+if version >= 703
+	"store undo changes even after you close the file
+	set undofile
+	set undodir=/tmp
+	"Maximum number of changes that can be undone.
+	set undolevels=1000
+	"Maximum number lines to save for undo on a buffer reload.
+	set undoreload=10000
+	"Remind me not to make long lines with a subtle column of gray on the
+		"right.
+	set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10
+	hi ColorColumn ctermbg=darkgray
+endif
+
 
 :set ruler
 
