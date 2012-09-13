@@ -3,20 +3,22 @@
 :set cursorline " show cursor line
 :set spell
 
-set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
+":set number
 
-set background=dark
-set modeline
+"set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
 
-set statusline=%M%h%y\ %t\ %F\ %p%%\ %l/%L\ %=[%{&ff},%{&ft}]\ [a=\%03.3b]\ [h=\%02.2B]\ [%l,%v]
-set title titlelen=150 titlestring=%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
+"set background=dark
+"set modeline
 
-set nowrap
+"set statusline=%M%h%y\ %t\ %F\ %p%%\ %l/%L\ %=[%{&ff},%{&ft}]\ [a=\%03.3b]\ [h=\%02.2B]\ [%l,%v]
+"set title titlelen=150 titlestring=%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
+
+"set nowrap
 
 set backspace=indent,eol,start  " backspace over all kinds of things
 
-set cmdheight=1         " command line two lines high
-set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
+"set cmdheight=1         " command line two lines high
+"set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
 
 set enc=utf-8 fenc=utf-8   " utf-8 encoding
 set ffs=unix,dos,mac       " default fileformats
@@ -27,10 +29,10 @@ set maxmem=25123  " 24 MB -  max mem in Kbyte to use for one buffer.  Max is 200
 set noautowrite         " don't automagically write on :next
 set paste               " don't indent blocks of pasted text
 
-set showcmd         " Show us the command we're typing
-set showfulltag       " show full completion tags
+"set showcmd         " Show us the command we're typing
+"set showfulltag       " show full completion tags
 
-set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+"set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
 "tab to space stuffs
 "set cindent
@@ -75,3 +77,6 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " only for windows [give some path to store the line number info]
 "set viminfo='10,\"100,:20,%,nc:\\Winnt\\_viminfo
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+:set ruler
+
