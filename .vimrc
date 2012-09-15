@@ -1,14 +1,15 @@
 :syntax on
 :colorscheme elflord
 :set cursorline " show cursor line
+:set cursorcolumn " show cursor column
 :set spell
 
 " Auto write files when you leave the buffer
-set autowrite
+"set autowrite
 
 :set number
 
-"set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
+set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
 
 "set background=dark
 "set modeline
@@ -89,12 +90,6 @@ if version >= 703
 	set undolevels=1000
 	"Maximum number lines to save for undo on a buffer reload.
 	set undoreload=10000
-	"Remind me not to make long lines with a subtle column of gray on the
-		"right.
-	set colorcolumn=+1,+2,+3,+4,+5,+6,+7,+8,+9,+10
-	hi ColorColumn ctermbg=darkgray
 endif
 
-
 :set ruler
-
