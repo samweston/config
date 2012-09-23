@@ -38,12 +38,17 @@ set paste               " don't indent blocks of pasted text
 
 "set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
+set tabstop=8
+
 "tab to space stuffs
+
+" Python specific
+autocmd FileType python set smartindent | set autoindent | set expandtab | set tabstop=4 | set shiftwidth=4 | set smarttab
+
 "set cindent
 "set smartindent
 "set autoindent
 "set expandtab
-set tabstop=8
 "set shiftwidth=4
 "set cinkeys=0{,0},:,0#,!^F
 "set smarttab
