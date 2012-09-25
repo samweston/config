@@ -187,7 +187,7 @@ echo ""
 
 function _exit()        # Function to run upon exit of shell.
 {
-    echo -e "${RED}Hasta la vista, baby${NC}"
+    echo -e "${RED}Bye byte :'(${NC}"
 }
 trap _exit EXIT
 
