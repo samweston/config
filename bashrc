@@ -83,7 +83,7 @@ alias sm="xrandr --output VGA-0 --off --output LVDS-0 --mode 1280x800"
 alias hibernate="sudo ifconfig wlan0 down; sudo pm-hibernate"
 alias suspend="sudo ifconfig wlan0 down; sudo pm-suspend"
 
-alias compress="tar czvf" #<output file e.g. file.tar.gz> <inputs>
+alias compress="tar czvf out.tar.gz" #<inputs>
 
 #
 # Colors
