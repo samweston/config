@@ -76,12 +76,14 @@ fi
 export EDITOR=vim
 
 #Laptop swap between monitors
-alias dm="xrandr --output VGA-0 --mode 1920x1080 --pos 1280x0 --output LVDS-0 --mode 1280x800 --pos 0x500"
+alias dualm="xrandr --output VGA-0 --mode 1920x1080 --pos 1280x0 --output LVDS-0 --mode 1280x800 --pos 0x500"
 alias sm="xrandr --output VGA-0 --off --output LVDS-0 --mode 1280x800"
 
 #need to turn off wireless before hibernate / suspend
-alias hibernate="sudo ifconfig wlan down; sudo pm-hibernate"
-alias suspend="sudo ifconfig wlan down; sudo pm-suspend"
+alias hibernate="sudo ifconfig wlan0 down; sudo pm-hibernate"
+alias suspend="sudo ifconfig wlan0 down; sudo pm-suspend"
+
+alias compress="tar czvf" #<output file e.g. file.tar.gz> <inputs>
 
 #
 # Colors
