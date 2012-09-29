@@ -44,6 +44,9 @@ set autoindent
 " Python specific
 autocmd FileType python set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
 
+" Latex specific
+au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
+
 "set cindent
 "set smartindent
 "set autoindent
