@@ -220,6 +220,15 @@ function extract()      # Handy Extract Program.
      fi
 }
 
+function opdf()
+{
+     if [ -f $1 ] ; then
+         `evince $1 &> /dev/null` &
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
 function ii()   # Get current host related info.
 {
     echo -e "\nYou are logged on ${RED}$HOST"
