@@ -1,3 +1,3 @@
 if [ -f ~/.Xmodmap ]; then
-xmodmap ~/.Xmodmap
+	xmodmap ~/.Xmodmap
 fi

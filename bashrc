@@ -201,18 +201,19 @@ function extract()      # Handy Extract Program.
 {
      if [ -f $1 ] ; then
          case $1 in
-             *.tar.bz2)   tar xvjf $1     ;;
-             *.tar.gz)    tar xvzf $1     ;;
-             *.bz2)       bunzip2 $1      ;;
-             *.rar)       unrar x $1      ;;
-             *.gz)        gunzip $1       ;;
-             *.tar)       tar xvf $1      ;;
-             *.tbz2)      tar xvjf $1     ;;
-             *.tgz)       tar xvzf $1     ;;
-             *.zip)       unzip $1        ;;
-             *.Z)         uncompress $1   ;;
-             *.7z)        7z x $1         ;;
-             *)           echo "'$1' cannot be extracted via >extract<" ;;
+             *.tar.bz2)   echo "tar xvjf $1" ; tar xvjf $1 > /dev/null       ;;
+             *.tar.gz)    echo "tar xvzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.bz2)       echo "bunzip2 $1  &" ; bunzip2 $1  > /dev/null     ;;
+             *.rar)       echo "unrar x $1" ; unrar x $1 > /dev/null         ;;
+             *.gz)        echo "gunzip $1 &" ; gunzip $1 > /dev/null         ;;
+             *.tar)       echo "tar xvf $1" ; tar xvf $1 > /dev/null         ;;
+             *.tbz2)      echo "tar xvjf $1" ; tar xvjf $1 > /dev/null       ;;
+             *.tgz)       echo "tar xvzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.zip)       echo "unzip $1 &" ; unzip $1 > /dev/null           ;;
+             *.Z)         echo "uncompress $1 &" ; uncompress $1 > /dev/null ;;
+             *.7z)        echo "7z x $1" ; 7z x $1 > /dev/null               ;;
+#             *.deb)       echo "ar vx $1" ; ar vx $1                         ;;
+             *)           echo "'$1' cannot be extracted via >extract<"      ;;
          esac
      else
          echo "'$1' is not a valid file"

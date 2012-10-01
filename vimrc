@@ -55,6 +55,15 @@ au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tab
 "set cinkeys=0{,0},:,0#,!^F
 "set smarttab
 
+"Always show tabs
+set showtabline=2
+
+"Mini buf explorer stuffs
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplModSelTarget = 1
+
 " Highlight over 80
 "highlight 80 ctermbg=red ctermfg=white guibg=#592929
 "match 80 /\%81v.\+/
