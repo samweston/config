@@ -180,6 +180,15 @@ CYAN='\e[1;36m'
 NC='\e[0m'              # No Color
 # --> Nice. Has the same effect as using "ansi.sys" in DOS.
 
+echo -e "\e[1;32m"
+echo -e "  ______             "
+echo -e " / _____)            "
+echo -e "( (____  _____ ____  "
+echo -e " \____ \(____ |    \ "
+echo -e " _____) ) ___ | | | |"
+echo -e "(______/\_____|_|_|_|"
+echo -e "${NC}"
+
 # Looks best on a terminal with black background.....
 echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
 ${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
