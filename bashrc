@@ -29,6 +29,12 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
+# add ~/bin to path if exists
+if [ -d ~/bin ] ; then
+	PATH=~/bin:"${PATH}"
+	export PATH
+fi
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
