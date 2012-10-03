@@ -85,6 +85,10 @@ alias suspend="sudo ifconfig wlan0 down; sudo pm-suspend"
 
 alias compress="tar czvf out.tar.gz" #<inputs>
 
+
+alias svim="vim"
+
+
 #
 # Colors
 #
