@@ -91,7 +91,6 @@ alias suspend="sudo ifconfig wlan0 down; sudo pm-suspend"
 
 alias compress="tar czvf out.tar.gz" #<inputs>
 
-
 alias svim="vim"
 
 
@@ -237,6 +236,17 @@ function extract()      # Handy Extract Program.
      else
          echo "'$1' is not a valid file"
      fi
+}
+
+function interwebs()
+{
+	if [ $(which google-chrome) ]; then
+		`google-chrome &> /dev/null` &
+	else
+		echo "PMG no chromes!"
+		browser="$(which firefox || which opera || which arora)"
+		`$browser &> /dev/null` &
+	fi
 }
 
 function opdf()
