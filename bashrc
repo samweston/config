@@ -273,6 +273,35 @@ function ii()   # Get current host related info.
     echo
 }
 
+function screen_saver() {
+	echo "woo"
+	while :; do sl; done
+}
+
+function s_timeout()
+{
+	echo $$ > ~/log/screen_lock.pid
+	sleep 10
+	screen_saver
+}
+function s_timeout_reset()
+{
+	PID=$(<~/log/screen_lock.pid)
+	if [ ! -z "$PID" ]
+	then
+		kill "$PID"
+	fi
+	s_timeout &
+}
+#if [ $(which sl) ]; then
+#	mkdir -p ~/log
+#	if [ ! -f ~/log/screen_lock.pid ]
+#	then
+#		touch ~/log/screen_lock.pid
+#	fi
+#	PROMPT_COMMAND=s_timeout_reset
+#fi
+
 
 #Following commands require bash 3
 if [ "${BASH_VERSION%.*}" \< "3.0" ]; then
