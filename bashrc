@@ -93,6 +93,12 @@ alias compress="tar czvf out.tar.gz" #<inputs>
 
 alias svim="vim"
 
+alias v="vim"
+alias e:="vim"
+alias vs="vim -S"
+
+alias gca="git commit -a"
+alias gcam="git commit -a -m" 
 
 #
 # Colors
