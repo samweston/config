@@ -302,7 +302,15 @@ function s_timeout_reset()
 
 function gr()
 {
-    grep --color -rn $* .
+    if [ $# == 1 ]
+    then
+        grep --color -r $* .
+    elif [ $# == 2 ]
+    then
+        grep --color -r $*
+    else
+        echo ">.<"
+    fi
 }
 
 
