@@ -324,10 +324,10 @@ function gr()
 #fi
 
 #run tmux by default
-if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
-then
-    tmux
-fi
+#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
+#then
+#    tmux new; exit
+#fi
 
 #Following commands require bash 4
 #if [ "${BASH_VERSION%.*}" \< "3.0" ]; then
