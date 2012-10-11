@@ -299,6 +299,13 @@ function s_timeout_reset()
 	fi
 	s_timeout &
 }
+
+function gr()
+{
+    grep --color -rn $* .
+}
+
+
 #if [ $(which sl) ]; then
 #	mkdir -p ~/log
 #	if [ ! -f ~/log/screen_lock.pid ]
