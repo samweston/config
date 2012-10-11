@@ -300,6 +300,7 @@ function s_timeout_reset()
 	s_timeout &
 }
 
+#recursive grep
 function gr()
 {
     if [ "$#" == "1" ]
@@ -322,12 +323,17 @@ function gr()
 #	PROMPT_COMMAND=s_timeout_reset
 #fi
 
-
-#Following commands require bash 3
-if [ "${BASH_VERSION%.*}" \< "3.0" ]; then
-    echo "You will need to upgrade to version 3.0 \
-for full programmable completion features."
-    return
+#run tmux by default
+if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
+then
+    tmux new; exit
 fi
+
+#Following commands require bash 4
+#if [ "${BASH_VERSION%.*}" \< "3.0" ]; then
+#    echo "You will need to upgrade to version 3.0 \
+#for full programmable completion features."
+#    return
+#fi
 
 
