@@ -326,7 +326,7 @@ function gr()
 #run tmux by default
 if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
 then
-    tmux new; exit
+    tmux
 fi
 
 #Following commands require bash 4
