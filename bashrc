@@ -302,17 +302,16 @@ function s_timeout_reset()
 
 function gr()
 {
-    if [ $# == 1 ]
+    if [ "$#" == "1" ]
     then
-        grep --color -r $* .
-    elif [ $# == 2 ]
+        grep -r $* .
+    elif [ "$#" -ge "2" ]
     then
-        grep --color -r $*
+        grep -r $*
     else
         echo ">.<"
     fi
 }
-
 
 #if [ $(which sl) ]; then
 #	mkdir -p ~/log

@@ -31,7 +31,6 @@ set history=3000        " keep 3000 lines of command line history
 set maxmem=25123  " 24 MB -  max mem in Kbyte to use for one buffer.  Max is 2000000
 
 set noautowrite         " don't automagically write on :next
-set paste               " don't indent blocks of pasted text
 
 "set showcmd         " Show us the command we're typing
 "set showfulltag       " show full completion tags
@@ -150,3 +149,4 @@ endif
 "" map <leader>m :call MakeSession()<CR>
 
 :set ruler
+:set paste               " don't indent blocks of pasted text
