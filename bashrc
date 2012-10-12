@@ -100,6 +100,8 @@ alias vs="vim -S"
 alias gca="git commit -a"
 alias gcam="git commit -a -m" 
 
+alias cindent="indent -linux *.c ; indent -linux *.h ; rm *~ "
+
 #
 # Colors
 #
