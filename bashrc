@@ -302,6 +302,17 @@ function s_timeout_reset()
 	s_timeout &
 }
 
+#recursive inplace sed
+function sri()
+{
+    if [ "$#" == "1" ]
+    then
+	find . -type f -print0 | xargs -0 sed -i $*
+    else
+        echo ">.<"
+    fi
+}
+
 #recursive grep
 function gr()
 {
