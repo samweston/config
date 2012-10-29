@@ -3,6 +3,8 @@
 :set cursorline " show cursor line
 :set cursorcolumn " show cursor column
 :set spell
+":filetype plugin on
+":filetype indent on
 
 " Auto write files when you leave the buffer
 "set autowrite
