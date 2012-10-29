@@ -307,7 +307,7 @@ function sri()
 {
     if [ "$#" == "1" ]
     then
-	find . -type f -print0 | xargs -0 sed -i $*
+        find . -type f -print0 | xargs -0 sed -i "$*"
     else
         echo ">.<"
     fi
@@ -318,10 +318,10 @@ function gr()
 {
     if [ "$#" == "1" ]
     then
-        grep -r $* .
-    elif [ "$#" -ge "2" ]
+        grep -r "$*" .
+    elif [ "$#" == "2" ]
     then
-        grep -r $*
+        grep -r "$1" "$2"
     else
         echo ">.<"
     fi
