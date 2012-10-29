@@ -100,8 +100,6 @@ alias vs="vim -S"
 alias gca="git commit -a"
 alias gcam="git commit -a -m" 
 
-alias cindent="indent -linux *.c ; indent -linux *.h ; rm *~ "
-
 #
 # Colors
 #
@@ -325,6 +323,18 @@ function gr()
     else
         echo ">.<"
     fi
+}
+
+function cindent()
+{
+	if [ $(which indent) ];
+	then
+		indent -linux *.c
+		indent -linux *.h 2> /dev/null
+		rm *~
+	else
+		echo "indent not found"
+	fi
 }
 
 #if [ $(which sl) ]; then
