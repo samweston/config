@@ -97,6 +97,8 @@ alias v="vim"
 alias :e="vim"
 alias vs="vim -S"
 
+alias :q="exit"
+
 alias gca="git commit -a"
 alias gcam="git commit -a -m" 
 
