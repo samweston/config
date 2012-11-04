@@ -11,6 +11,9 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# Add to to history after each command
+export PROMPT_COMMAND="history -a"
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -101,6 +104,10 @@ alias :q="exit"
 
 alias gca="git commit -a"
 alias gcam="git commit -a -m" 
+
+#remove dead sym links
+alias rmdeadln="find -L -type l -delete"
+
 
 #
 # Colors
@@ -322,6 +329,16 @@ function gr()
     elif [ "$#" == "2" ]
     then
         grep -r "$1" "$2"
+    else
+        echo ">.<"
+    fi
+}
+
+function f()
+{
+    if [ "$#" == "1" ]
+    then
+	find . -name "$1"
     else
         echo ">.<"
     fi
