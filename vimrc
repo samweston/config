@@ -2,7 +2,7 @@
 :colorscheme elflord
 :set cursorline " show cursor line
 :set cursorcolumn " show cursor column
-:set spell
+":set spell
 ":filetype plugin on
 ":filetype indent on
 
@@ -10,6 +10,8 @@
 "set autowrite
 
 :set number
+
+au BufRead,BufNewFile *.aasm set filetype=armasm
 
 set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
 
