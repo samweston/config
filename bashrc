@@ -82,6 +82,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+#Turn off bash hashing
+set +h
+
 export EDITOR=vim
 
 #Laptop swap between monitors
