@@ -82,6 +82,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+#Number of make jobs = number of processors
+export MAKEFLAGS='-j'$(grep -c ^processor /proc/cpuinfo)
+
 #Turn off bash hashing
 set +h
 
