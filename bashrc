@@ -90,6 +90,10 @@ set +h
 
 export EDITOR=vim
 
+#Rsync aliases
+alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h "
+alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
+
 #Laptop swap between monitors
 alias dualm="xrandr --output VGA-0 --mode 1920x1080 --pos 1280x0 --output LVDS-0 --mode 1280x800 --pos 0x600"
 alias sm="xrandr --output VGA-0 --off --output LVDS-0 --mode 1280x800"
@@ -240,14 +244,14 @@ function extract()      # Handy Extract Program.
 {
      if [ -f $1 ] ; then
          case $1 in
-             *.tar.bz2)   echo "tar xvjf $1" ; tar xvjf $1 > /dev/null       ;;
-             *.tar.gz)    echo "tar xvzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.tar.bz2)   echo "tar xjf $1" ; tar xvjf $1 > /dev/null       ;;
+             *.tar.gz)    echo "tar xzf $1" ; tar xvzf $1 > /dev/null       ;;
              *.bz2)       echo "bunzip2 $1  &" ; bunzip2 $1  > /dev/null     ;;
              *.rar)       echo "unrar x $1" ; unrar x $1 > /dev/null         ;;
              *.gz)        echo "gunzip $1 &" ; gunzip $1 > /dev/null         ;;
-             *.tar)       echo "tar xvf $1" ; tar xvf $1 > /dev/null         ;;
-             *.tbz2)      echo "tar xvjf $1" ; tar xvjf $1 > /dev/null       ;;
-             *.tgz)       echo "tar xvzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.tar)       echo "tar xf $1" ; tar xvf $1 > /dev/null         ;;
+             *.tbz2)      echo "tar xjf $1" ; tar xvjf $1 > /dev/null       ;;
+             *.tgz)       echo "tar xzf $1" ; tar xvzf $1 > /dev/null       ;;
              *.zip)       echo "unzip $1 &" ; unzip $1 > /dev/null           ;;
              *.Z)         echo "uncompress $1 &" ; uncompress $1 > /dev/null ;;
              *.7z)        echo "7z x $1" ; 7z x $1 > /dev/null               ;;
