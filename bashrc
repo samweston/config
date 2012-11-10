@@ -15,8 +15,8 @@ shopt -s histappend
 export PROMPT_COMMAND="history -a"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000000
+HISTFILESIZE=20000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -94,6 +94,10 @@ export EDITOR=vim
 alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h "
 alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
 
+#Make cross compiler tools easier to reach
+alias agcc="arm-linux-gnueabi-gcc"
+alias aobjdump="arm-linux-gnueabi-objdump"
+
 #Laptop swap between monitors
 alias dualm="xrandr --output VGA-0 --mode 1920x1080 --pos 1280x0 --output LVDS-0 --mode 1280x800 --pos 0x600"
 alias sm="xrandr --output VGA-0 --off --output LVDS-0 --mode 1280x800"
@@ -113,7 +117,7 @@ alias vs="vim -S"
 alias :q="exit"
 
 alias gca="git commit -a"
-alias gcam="git commit -a -m" 
+alias gcam="git commit -a -m"
 
 #remove dead sym links
 alias rmdeadln="find -L -type l -delete"

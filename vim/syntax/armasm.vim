@@ -55,7 +55,7 @@ syn keyword asmTodo		contained TODO
 " people are using "@" with the .type directive. See
 " http://sourceware.org/binutils/docs-2.19/as/Type.html
 syn region asmComment		start="/\*" end="\*/" contains=asmTodo
-syn match asmComment		"[;!|].*" contains=asmTodo
+syn match asmComment		"[;|].*" contains=asmTodo
 syn match asmComment		"@.*" contains=asmTodo
 
 syn match asmInclude		"\.include"
