@@ -63,6 +63,10 @@ nnoremap n j
 nnoremap j n
 nnoremap e k
 nnoremap k e
+vnoremap n j
+vnoremap j n
+vnoremap e k
+vnoremap k e
 
 "command helpers
 
