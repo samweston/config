@@ -58,6 +58,14 @@ au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tab
 "set cinkeys=0{,0},:,0#,!^F
 "set smarttab
 
+"colemak modifications
+nnoremap n j
+nnoremap j n
+nnoremap e k
+nnoremap k e
+
+"command helpers
+
 "Always show tabs
 set showtabline=2
 
