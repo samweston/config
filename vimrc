@@ -44,6 +44,12 @@ set noautowrite         " don't automagically write on :next
 set tabstop=8
 set autoindent
 
+" Java specific
+autocmd FileType java set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
+
+" Go
+autocmd FileType go set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
+
 " Python specific
 autocmd FileType python set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
 

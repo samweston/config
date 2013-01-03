@@ -85,6 +85,9 @@ fi
 #Number of make jobs = number of processors
 export MAKEFLAGS='-j'$(grep -c ^processor /proc/cpuinfo)
 
+#set go root
+export GOROOT=$HOME/Software/go
+
 #Turn off bash hashing
 set +h
 
