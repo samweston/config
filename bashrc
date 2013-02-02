@@ -274,6 +274,8 @@ function interwebs()
 {
 	if [ $(which google-chrome) ]; then
 		`google-chrome &> /dev/null` &
+	elif [ $(which chromium-browser) ]; then
+		`chromium-browser &> /dev/null` &
 	else
 		echo "PMG no chromes!"
 		browser="$(which firefox || which opera || which arora)"
