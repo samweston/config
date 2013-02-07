@@ -272,14 +272,10 @@ function extract()      # Handy Extract Program.
 
 function interwebs()
 {
-	if [ $(which google-chrome) ]; then
-		`google-chrome &> /dev/null` &
-	elif [ $(which chromium-browser) ]; then
-		`chromium-browser &> /dev/null` &
+	if [ $(which python) ]; then
+		python -mwebbrowser http://www.google.com/
 	else
-		echo "PMG no chromes!"
-		browser="$(which firefox || which opera || which arora)"
-		`$browser &> /dev/null` &
+		echo "python not installed"
 	fi
 }
 
