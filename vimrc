@@ -44,6 +44,9 @@ set noautowrite         " don't automagically write on :next
 set tabstop=8
 set autoindent
 
+" haskell
+autocmd FileType haskell set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
+
 " Java specific
 autocmd FileType java set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
 
