@@ -373,15 +373,6 @@ function cindent()
 	fi
 }
 
-#if [ $(which sl) ]; then
-#	mkdir -p ~/log
-#	if [ ! -f ~/log/screen_lock.pid ]
-#	then
-#		touch ~/log/screen_lock.pid
-#	fi
-#	PROMPT_COMMAND=s_timeout_reset
-#fi
-
 #run tmux by default
 #if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
 #then
