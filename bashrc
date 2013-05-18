@@ -281,6 +281,22 @@ function interwebs()
 	fi
 }
 
+#install a program
+function i()
+{
+	if [ $# -ne 1 ]; then
+		echo "please specify a file"
+	else
+		if [ -f /etc/redhat-release ]; then
+			sudo yum install $1
+		elif [ -f /etc/debian_version ]; then
+			sudo apt-get install $1
+		else
+			echo "package manager not supported"
+		fi
+	fi
+}
+
 function opdf()
 {
      if [ -f $1 ] ; then
