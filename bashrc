@@ -247,6 +247,11 @@ trap _exit EXIT
 # Programs
 #-------------------------------------------------------------
 
+function command_exists()
+{
+	type "$1" &> /dev/null ;
+}
+
 function extract()      # Handy Extract Program.
 {
      if [ -f $1 ] ; then
@@ -272,9 +277,9 @@ function extract()      # Handy Extract Program.
 
 function interwebs()
 {
-	if [ $(which chromium-browser) ]; then
+	if command_exists chromium-browser; then
 		chromium-browser &> /dev/null
-	elif [ $(which python) ]; then
+	elif command_exists python; then
 		python -mwebbrowser http://www.google.com/ &> /dev/null
 	else
 		echo "python not installed"
@@ -379,8 +384,7 @@ function f()
 
 function cindent()
 {
-	if [ $(which indent) ];
-	then
+	if command_exists indent; then
 		indent -linux *.c
 		indent -linux *.h 2> /dev/null
 		rm *~
