@@ -101,14 +101,6 @@ alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-se
 alias agcc="arm-linux-gnueabi-gcc"
 alias aobjdump="arm-linux-gnueabi-objdump"
 
-#Laptop swap between monitors
-alias dualm="xrandr --output VGA-0 --mode 1920x1080 --pos 1280x0 --output LVDS-0 --mode 1280x800 --pos 0x600"
-alias sm="xrandr --output VGA-0 --off --output LVDS-0 --mode 1280x800"
-
-#need to turn off wireless before hibernate / suspend
-alias hibernate="sudo ifconfig wlan0 down; sudo pm-hibernate"
-alias suspend="sudo ifconfig wlan0 down; sudo pm-suspend"
-
 alias compress="tar czvf out.tar.gz" #<inputs>
 
 alias svim="vim"
