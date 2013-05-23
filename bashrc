@@ -290,42 +290,6 @@ function opdf()
      fi
 }
 
-function ii()   # Get current host related info.
-{
-    echo -e "\nYou are logged on ${RED}$HOST"
-    echo -e "\nAdditionnal information:$NC " ; uname -a
-    echo -e "\n${RED}Users logged on:$NC " ; w -h
-    echo -e "\n${RED}Current date :$NC " ; date
-    echo -e "\n${RED}Machine stats :$NC " ; uptime
-    echo -e "\n${RED}Memory stats :$NC " ; free
-    my_ip 2>&- ;
-    echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:-"Not connected"}
-    echo -e "\n${RED}ISP Address :$NC" ; echo ${MY_ISP:-"Not connected"}
-    echo -e "\n${RED}Open connections :$NC "; netstat -pan --inet;
-    echo
-}
-
-function screen_saver() {
-	echo "woo"
-	while :; do sl; done
-}
-
-function s_timeout()
-{
-	echo $$ > ~/log/screen_lock.pid
-	sleep 10
-	screen_saver
-}
-function s_timeout_reset()
-{
-	PID=$(<~/log/screen_lock.pid)
-	if [ ! -z "$PID" ]
-	then
-		kill "$PID"
-	fi
-	s_timeout &
-}
-
 #recursive inplace sed
 function sri()
 {
