@@ -125,6 +125,10 @@ alias gcam="git commit -a -m"
 #remove dead sym links
 alias rmdeadln="find -L -type l -delete"
 
+function command_exists()
+{
+	type "$1" &> /dev/null ;
+}
 
 #
 # Colors
@@ -230,7 +234,11 @@ echo -e "${NC}"
 echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
 ${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
 #Show vim version
-echo -e "${Yellow}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
+if command_exists vim; then
+	echo -e "${Yellow}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
+else
+	echo -e "${Yellow}Oh no VIM is not installed!!${NC}"
+fi
 date
 if [ -x /usr/games/fortune ]; then
     /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
@@ -247,23 +255,18 @@ trap _exit EXIT
 # Programs
 #-------------------------------------------------------------
 
-function command_exists()
-{
-	type "$1" &> /dev/null ;
-}
-
 function extract()      # Handy Extract Program.
 {
      if [ -f $1 ] ; then
          case $1 in
-             *.tar.bz2)   echo "tar xjf $1" ; tar xvjf $1 > /dev/null       ;;
-             *.tar.gz)    echo "tar xzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.tar.bz2)   echo "tar xjf $1" ; tar xvjf $1 > /dev/null        ;;
+             *.tar.gz)    echo "tar xzf $1" ; tar xvzf $1 > /dev/null        ;;
              *.bz2)       echo "bunzip2 $1  &" ; bunzip2 $1  > /dev/null     ;;
              *.rar)       echo "unrar x $1" ; unrar x $1 > /dev/null         ;;
              *.gz)        echo "gunzip $1 &" ; gunzip $1 > /dev/null         ;;
-             *.tar)       echo "tar xf $1" ; tar xvf $1 > /dev/null         ;;
-             *.tbz2)      echo "tar xjf $1" ; tar xvjf $1 > /dev/null       ;;
-             *.tgz)       echo "tar xzf $1" ; tar xvzf $1 > /dev/null       ;;
+             *.tar)       echo "tar xf $1" ; tar xvf $1 > /dev/null          ;;
+             *.tbz2)      echo "tar xjf $1" ; tar xvjf $1 > /dev/null        ;;
+             *.tgz)       echo "tar xzf $1" ; tar xvzf $1 > /dev/null        ;;
              *.zip)       echo "unzip $1 &" ; unzip $1 > /dev/null           ;;
              *.Z)         echo "uncompress $1 &" ; uncompress $1 > /dev/null ;;
              *.7z)        echo "7z x $1" ; 7z x $1 > /dev/null               ;;
