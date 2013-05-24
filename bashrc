@@ -119,7 +119,7 @@ alias rmdeadln="find -L -type l -delete"
 
 function command_exists()
 {
-	type "$1" &> /dev/null ;
+    type "$1" &> /dev/null ;
 }
 
 #
@@ -227,9 +227,9 @@ echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
 ${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
 #Show vim version
 if command_exists vim; then
-	echo -e "${Yellow}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
+    echo -e "${Yellow}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
 else
-	echo -e "${Yellow}Oh no VIM is not installed!!${NC}"
+    echo -e "${Yellow}Oh no VIM is not installed!!${NC}"
 fi
 date
 if [ -x /usr/games/fortune ]; then

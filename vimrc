@@ -1,3 +1,8 @@
+
+
+" vim-pathogen
+call pathogen#infect()
+
 :syntax on
 :colorscheme elflord
 :set cursorline " show cursor line
@@ -10,8 +15,6 @@
 "set autowrite
 
 :set number
-
-au BufRead,BufNewFile *.aasm set filetype=armasm
 
 set nocompatible    " vim, not vi.. must be first, because it changes other options as a side effect
 
@@ -49,6 +52,8 @@ set expandtab
 " show cool tab thing
 set list listchars=tab:»·,trail:·,extends:$,nbsp:=
 
+au BufRead,BufNewFile *.aasm set filetype=armasm
+
 " Latex specific
 au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
 
@@ -56,6 +61,9 @@ au BufEnter *.sql,*.prc,*.pas set smarttab | set smartindent | set expandtab | s
 
 "Always show tabs
 set showtabline=2
+
+" F12 toggles NERDTree
+map <F12> :NERDTreeToggle<CR>
 
 "Mini buf explorer stuffs
 "let g:miniBufExplMapWindowNavVim = 1
