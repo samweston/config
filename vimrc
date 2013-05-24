@@ -41,31 +41,18 @@ set noautowrite         " don't automagically write on :next
 
 "set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
-set tabstop=8
-set autoindent
-
-" haskell
-autocmd FileType haskell set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
-
-" Java specific
-autocmd FileType java set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
-
-" Go
-autocmd FileType go set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
-
-" Python specific
-autocmd FileType python set smarttab | set smartindent | set expandtab | set tabstop=4 | set shiftwidth=4
+set tabstop=4
+set shiftwidth=4
+set smartindent
+set smarttab
+set expandtab
+" show cool tab thing
+set list listchars=tab:»·,trail:·,extends:$,nbsp:=
 
 " Latex specific
 au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
 
-"set cindent
-"set smartindent
-"set autoindent
-"set expandtab
-"set shiftwidth=4
-"set cinkeys=0{,0},:,0#,!^F
-"set smarttab
+au BufEnter *.sql,*.prc,*.pas set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
 
 "Always show tabs
 set showtabline=2
@@ -81,12 +68,12 @@ set showtabline=2
 "match 80 /\%81v.\+/
 " Highlight characters past column 80
 if version >= 703
-  set cc=80
+    set cc=80
 elseif version >= 702
-  :au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-  :au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    :au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+    :au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 else
-  :match ErrorMsg '\%>80v.\+'
+    :match ErrorMsg '\%>80v.\+'
 endif
 syntax on
 
@@ -111,13 +98,13 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 if version >= 703
-	"store undo changes even after you close the file
-	set undofile
-	set undodir=/tmp
-	"Maximum number of changes that can be undone.
-	set undolevels=1000
-	"Maximum number lines to save for undo on a buffer reload.
-	set undoreload=10000
+    "store undo changes even after you close the file
+    set undofile
+    set undodir=/tmp
+    "Maximum number of changes that can be undone.
+    set undolevels=1000
+    "Maximum number lines to save for undo on a buffer reload.
+    set undoreload=10000
 endif
 
 "" Creates a session
