@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source bashrc
-
 # Set up config files
 
 # VIM
@@ -14,7 +12,7 @@ if [ "`pwd`/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
     mkdir -p vim/bundle
     cd vim/bundle/
     # NERDTree
-    git clone https://github.com/scrooloose/nerdtree.git
+    git clone http://github.com/scrooloose/nerdtree.git
     cd ../../
 fi
 
