@@ -55,6 +55,7 @@ au BufRead,BufNewFile *.aasm set filetype=armasm
 " Latex specific
 au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2 | set spell
 
+au BufRead,BufNewFile *.prc setfiletype sql
 au BufEnter *.sql,*.prc,*.pas set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
 
 "Always show tabs
