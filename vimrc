@@ -61,6 +61,14 @@ au BufEnter *.sql,*.prc,*.pas set smarttab | set smartindent | set expandtab | s
 "Always show tabs
 set showtabline=2
 
+" jj = esc in insert mode
+:imap jj <Esc>
+
+" Paste toggle
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " F12 toggles NERDTree
 map <F12> :NERDTreeToggle<CR>
 
@@ -105,4 +113,4 @@ if version >= 703
 endif
 
 :set ruler
-:set paste               " don't indent blocks of pasted text
+:set nopaste               " don't indent blocks of pasted text
