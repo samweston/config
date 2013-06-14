@@ -114,7 +114,7 @@ alias :q="exit"
 alias gca="git commit -a"
 alias gcam="git commit -a -m"
 
-alias tm="tmux attach || tmux new"
+alias tmux="tmux attach || tmux new"
 
 #remove dead sym links
 alias rmdeadln="find -L -type l -delete"
