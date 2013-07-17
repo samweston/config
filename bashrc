@@ -34,8 +34,8 @@ esac
 
 # add ~/bin to path if exists
 if [ -d ~/bin ] ; then
-	PATH=~/bin:"${PATH}"
-	export PATH
+    PATH=~/bin:"${PATH}"
+    export PATH
 fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -274,29 +274,29 @@ function extract()      # Handy Extract Program.
 
 function interwebs()
 {
-	if command_exists chromium-browser; then
-		chromium-browser &> /dev/null
-	elif command_exists python; then
-		python -mwebbrowser http://www.google.com/ &> /dev/null
-	else
-		echo "python not installed"
-	fi
+    if command_exists chromium-browser; then
+        chromium-browser &> /dev/null
+    elif command_exists python; then
+        python -mwebbrowser http://www.google.com/ &> /dev/null
+    else
+        echo "python not installed"
+    fi
 }
 
 #install a program
 function i()
 {
-	if [ $# -ne 1 ]; then
-		echo "please specify a file"
-	else
-		if [ -f /etc/redhat-release ]; then
-			sudo yum install $1
-		elif [ -f /etc/debian_version ]; then
-			sudo apt-get install $1
-		else
-			echo "package manager not supported"
-		fi
-	fi
+    if [ $# -ne 1 ]; then
+        echo "please specify a program to install"
+    else
+        if [ -f /etc/redhat-release ]; then
+            sudo yum install $1
+        elif [ -f /etc/debian_version ]; then
+            sudo apt-get install $1
+        else
+            echo "package manager not supported"
+        fi
+    fi
 }
 
 function opdf()
@@ -337,7 +337,7 @@ function f()
 {
     if [ "$#" == "1" ]
     then
-	find . -name "$1"
+    find . -name "$1"
     else
         echo ">.<"
     fi
@@ -345,13 +345,13 @@ function f()
 
 function cindent()
 {
-	if command_exists indent; then
-		indent -linux *.c
-		indent -linux *.h 2> /dev/null
-		rm *~
-	else
-		echo "indent not found"
-	fi
+    if command_exists indent; then
+        indent -linux *.c
+        indent -linux *.h 2> /dev/null
+        rm *~
+    else
+        echo "indent not found"
+    fi
 }
 
 #run tmux by default
@@ -366,5 +366,4 @@ function cindent()
 #for full programmable completion features."
 #    return
 #fi
-
 
