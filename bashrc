@@ -92,6 +92,7 @@ export GOROOT=$HOME/Software/go
 set +h
 
 export EDITOR=vim
+export VISUAL=vim
 
 #Rsync aliases
 alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h "
