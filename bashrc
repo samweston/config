@@ -275,7 +275,9 @@ function extract()      # Handy Extract Program.
 
 function interwebs()
 {
-    if command_exists chromium-browser; then
+    if command_exists google-chrome; then
+        google-chrome &> /dev/null
+    elif command_exists chromium-browser; then
         chromium-browser &> /dev/null
     elif command_exists python; then
         python -mwebbrowser http://www.google.com/ &> /dev/null
