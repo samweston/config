@@ -38,52 +38,41 @@ if [ -d ~/bin ] ; then
     export PATH
 fi
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-  # We have color support; assume it's compliant with Ecma-48
-  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-  # a case would tend to support setf rather than setaf.)
-  color_prompt=yes
-    else
-  color_prompt=
-    fi
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+else
+    color_prompt=
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+    if [[ $EUID -ne 0 ]]; then
+        COL="32m" # Green
+    else
+        COL="31m" # Red
+    fi
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;$COL\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias ls="ls --color=auto"
+    #alias dir="dir --color=auto"
+    #alias vdir="vdir --color=auto"
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
 fi
 
 #Number of make jobs = number of processors
-export MAKEFLAGS='-j'$(grep -c ^processor /proc/cpuinfo)
+export MAKEFLAGS="-j"$(grep -c ^processor /proc/cpuinfo)
 
 #set go root
 export GOROOT=$HOME/Software/go
@@ -129,43 +118,49 @@ function command_exists()
 # Greeting, motd etc...
 #-------------------------------------------------------------
 
-# Define some colors first:
-RED='\e[1;31m'
-BLUE='\e[1;34m'
-CYAN='\e[1;36m'
-YELLOW='\e[0;33m'
-NC='\e[0m'              # No Color
-# --> Nice. Has the same effect as using "ansi.sys" in DOS.
 
-echo -e "\e[1;32m"
-echo -e "  ______             "
-echo -e " / _____)            "
-echo -e "( (____  _____ ____  "
-echo -e " \____ \(____ |    \ "
-echo -e " _____) ) ___ | | | |"
-echo -e "(______/\_____|_|_|_|"
-echo -e "${NC}"
+if [[ $EUID -ne 0 ]]; then
+    # Define some colors first:
+    RED='\e[1;31m'
+    BLUE='\e[1;34m'
+    CYAN='\e[1;36m'
+    YELLOW='\e[0;33m'
+    NC='\e[0m'              # No Color
+    # --> Nice. Has the same effect as using "ansi.sys" in DOS.
 
-# Looks best on a terminal with black background.....
-echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
-${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
-#Show vim version
-if command_exists vim; then
-    echo -e "${YELLOW}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
-else
-    echo -e "${YELLOW}Oh no VIM is not installed!!${NC}"
+    echo -e "\e[1;32m"
+    echo -e "  ______             "
+    echo -e " / _____)            "
+    echo -e "( (____  _____ ____  "
+    echo -e " \____ \(____ |    \ "
+    echo -e " _____) ) ___ | | | |"
+    echo -e "(______/\_____|_|_|_|"
+    echo -e "${NC}"
+
+    # Looks best on a terminal with black background.....
+    echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
+    ${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
+    #Show vim version
+    if command_exists vim; then
+        echo -e "${YELLOW}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
+    else
+        echo -e "${YELLOW}Oh no VIM is not installed!!${NC}"
+    fi
+    date
+    if [ -x /usr/games/fortune ]; then
+        /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
+    fi
+    echo ""
 fi
-date
-if [ -x /usr/games/fortune ]; then
-    /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
-fi
-echo ""
 
 function _exit()        # Function to run upon exit of shell.
 {
     echo -e "${RED}Bye bye :'(${NC}"
 }
-trap _exit EXIT
+
+if [[ $EUID -ne 0 ]]; then
+    trap _exit EXIT
+fi
 
 #-------------------------------------------------------------
 # Programs
