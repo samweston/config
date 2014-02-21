@@ -172,6 +172,7 @@ function extract()      # Handy Extract Program.
          case $1 in
              *.tar.bz2)   echo "tar xjf $1" ; tar xvjf $1 > /dev/null        ;;
              *.tar.gz)    echo "tar xzf $1" ; tar xvzf $1 > /dev/null        ;;
+             *.tar.xz)    echo "tar xJf $1" ; tar xvJf $1 > /dev/null        ;;
              *.bz2)       echo "bunzip2 $1  &" ; bunzip2 $1  > /dev/null     ;;
              *.rar)       echo "unrar x $1" ; unrar x $1 > /dev/null         ;;
              *.gz)        echo "gunzip $1 &" ; gunzip $1 > /dev/null         ;;
