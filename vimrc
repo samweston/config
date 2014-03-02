@@ -50,13 +50,15 @@ set expandtab
 " show cool tab and dot thing
 set list listchars=tab:»·,trail:·,extends:$,nbsp:=
 
-au BufRead,BufNewFile *.aasm set filetype=armasm
-
 " Latex specific
-au BufEnter *.tex,*.bib set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2 | set spell
+au BufEnter *.tex,*.bib set tabstop=2 | set shiftwidth=2 | set spell
 
+" SQL specific
 au BufRead,BufNewFile *.prc setfiletype sql
-au BufEnter *.sql,*.prc,*.pas set smarttab | set smartindent | set expandtab | set tabstop=2 | set shiftwidth=2
+au BufEnter *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
+
+" Makefile specific
+au BufEnter Makefile set noexpandtab
 
 "Always show tabs
 set showtabline=2
