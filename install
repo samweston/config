@@ -27,3 +27,7 @@ ln -s `pwd`/tmux.conf ~/.tmux.conf
 # GIT
 rm ~/.gitconfig
 ln -s `pwd`/gitconfig ~/.gitconfig
+
+# XRESOURCES
+rm ~/.Xresources
+ln -s `pwd`/Xresources ~/.Xresources
