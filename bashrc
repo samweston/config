@@ -122,20 +122,32 @@ function command_exists()
 if [[ $EUID -ne 0 ]]; then
     # Define some colors first:
     RED='\e[1;31m'
+    GREEN='\e[0;32m'
+    YELLOW='\e[0;33m'
     BLUE='\e[1;34m'
     CYAN='\e[1;36m'
-    YELLOW='\e[0;33m'
     NC='\e[0m'              # No Color
-    # --> Nice. Has the same effect as using "ansi.sys" in DOS.
 
-    echo -e "\e[1;32m"
-    echo -e "  ______             "
-    echo -e " / _____)            "
-    echo -e "( (____  _____ ____  "
-    echo -e " \____ \(____ |    \ "
-    echo -e " _____) ) ___ | | | |"
-    echo -e "(______/\_____|_|_|_|"
-    echo -e "${NC}"
+    GA='`'
+    echo -e "$GREEN                    ${RED}   (__)    )"
+    echo -e "$GREEN                    ${RED}   (${BLUE}..$RED)   /|\\"
+    echo -e "$GREEN    ____            ${RED}  (${YELLOW}o${RED}_${YELLOW}o${RED})  / | \\"
+    echo -e "$GREEN   / __/__ ___ _    ${RED}  ___) \/,-|,-\\"
+    echo -e "$GREEN  _\ \/ _ $GA/  ' \\\\${RED}   //,-/_\ )  '  '"
+    echo -e "$GREEN /___/\_,_/_/_/_/   ${RED}   (//,-'\\"
+    echo -e "$GREEN                    ${RED}   (  ( . \_"
+    echo -e "$GREEN                    ${BLUE}gnv $RED$GA._\\\(___$GA."
+    echo -e "$GREEN                    ${RED}     '---' _)/"
+    echo -e "$GREEN                    ${RED}          $GA-'"
+
+#    echo -e "$GREEN          ____ _"
+#    echo -e "$GREEN         { --.\ \           $RED.)%%%)%%"
+#    echo -e "$GREEN          '-._\\ | (\___   $RED%)%%(%%(%%%"
+#    echo -e "$GREEN              $GA\\|{/ ${YELLOW}*$GREEN _>$RED-%(%%%%)%%;%%%"
+#    echo -e "$GREEN          .'^^^^^^^  /$GA    $RED%%)%%%%)%%%'"
+#    echo -e "$GREEN         //\   ) ,  /       $RED'%%%%(%%'"
+#    echo -e "$GREEN   ,  _.'/  $GA\<-- \< "
+#    echo -e "$GREEN    $GA^^^$GA     ^^   ^^"
 
     # Looks best on a terminal with black background.....
     echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
@@ -147,8 +159,8 @@ if [[ $EUID -ne 0 ]]; then
         echo -e "${YELLOW}Oh no VIM is not installed!!${NC}"
     fi
     date
-    if [ -x /usr/games/fortune ]; then
-        /usr/games/fortune -s     # Makes our day a bit more fun.... :-)
+    if command_exists fortune; then
+        fortune -s     # Makes our day a bit more fun.... :-)
     fi
     echo ""
 fi
