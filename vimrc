@@ -58,7 +58,7 @@ au BufRead,BufNewFile *.prc setfiletype sql
 au BufEnter *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
 
 " Makefile specific
-au BufEnter Makefile set noexpandtab
+au BufEnter Makefile,*.mk set noexpandtab
 
 "Always show tabs
 set showtabline=2
