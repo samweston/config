@@ -27,11 +27,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
 # add ~/bin to path if exists
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
@@ -72,7 +67,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 #Number of make jobs = number of processors
-export MAKEFLAGS="-j"$(grep -c ^processor /proc/cpuinfo)
+#export MAKEFLAGS="-j"$(grep -c ^processor /proc/cpuinfo)
 
 #set go root
 export GOROOT=$HOME/Software/go
@@ -119,14 +114,25 @@ function command_exists()
 #-------------------------------------------------------------
 
 
+
 if [[ $EUID -ne 0 ]]; then
     # Define some colors first:
-    RED='\e[1;31m'
-    GREEN='\e[0;32m'
-    YELLOW='\e[0;33m'
-    BLUE='\e[1;34m'
-    CYAN='\e[1;36m'
-    NC='\e[0m'              # No Color
+    # TODO work out the proper way of setting OSX terminal colours.
+    if [[ `uname` == 'Darwin' ]]; then
+        RED=''
+        GREEN=''
+        YELLOW=''
+        BLUE=''
+        CYAN=''
+        NC=''              # No Color
+    else
+        RED='\e[1;31m'
+        GREEN='\e[0;32m'
+        YELLOW='\e[0;33m'
+        BLUE='\e[1;34m'
+        CYAN='\e[1;36m'
+        NC='\e[0m'              # No Color
+    fi
 
     GA='`'
     echo -e "$GREEN                    ${RED}   (__)    )"
@@ -139,15 +145,6 @@ if [[ $EUID -ne 0 ]]; then
     echo -e "$GREEN                    ${BLUE}gnv $RED$GA._\\\(___$GA."
     echo -e "$GREEN                    ${RED}     '---' _)/"
     echo -e "$GREEN                    ${RED}          $GA-'"
-
-#    echo -e "$GREEN          ____ _"
-#    echo -e "$GREEN         { --.\ \           $RED.)%%%)%%"
-#    echo -e "$GREEN          '-._\\ | (\___   $RED%)%%(%%(%%%"
-#    echo -e "$GREEN              $GA\\|{/ ${YELLOW}*$GREEN _>$RED-%(%%%%)%%;%%%"
-#    echo -e "$GREEN          .'^^^^^^^  /$GA    $RED%%)%%%%)%%%'"
-#    echo -e "$GREEN         //\   ) ,  /       $RED'%%%%(%%'"
-#    echo -e "$GREEN   ,  _.'/  $GA\<-- \< "
-#    echo -e "$GREEN    $GA^^^$GA     ^^   ^^"
 
     # Looks best on a terminal with black background.....
     echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
