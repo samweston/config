@@ -3,8 +3,13 @@
 # Set up config files
 
 # VIM
-rm ~/.vimrc
+rm -f ~/.vimrc
 ln -s `pwd`/vimrc ~/.vimrc
+# if OSX add .xvimrc for XCode.
+if [[ `uname` == 'Darwin' ]]; then
+    rm -f ~/.xvimrc
+    ln -s `pwd`/vimrc ~/.xvimrc
+fi
 if [ "`pwd`/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
     rm -r ~/.vim
     ln -s `pwd`/vim ~/.vim
@@ -17,17 +22,17 @@ if [ "`pwd`/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
 fi
 
 # BASH
-rm ~/.bashrc
+rm -f ~/.bashrc
 ln -s `pwd`/bashrc ~/.bashrc
 
 # TMUX
-rm ~/.tmux.conf
+rm -f ~/.tmux.conf
 ln -s `pwd`/tmux.conf ~/.tmux.conf
 
 # GIT
-rm ~/.gitconfig
+rm -f ~/.gitconfig
 ln -s `pwd`/gitconfig ~/.gitconfig
 
 # XRESOURCES
-rm ~/.Xresources
+rm -f ~/.Xresources
 ln -s `pwd`/Xresources ~/.Xresources
