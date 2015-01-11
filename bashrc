@@ -230,56 +230,19 @@ function i()
 
 function opdf()
 {
-     if [ -f $1 ] ; then
-         `evince $1 &> /dev/null` &
-     else
-         echo "'$1' is not a valid file"
-     fi
-}
-
-#recursive inplace sed
-function sri()
-{
-    if [ "$#" == "1" ]
-    then
-        find . -type f -print0 | xargs -0 sed -i "$*"
+    if [ -f $1 ] ; then
+        `evince $1 &> /dev/null` &
     else
-        echo ">.<"
+        echo "'$1' is not a valid file"
     fi
 }
 
-#recursive grep
-function gr()
+function shutdownin()
 {
-    if [ "$#" == "1" ]
-    then
-        grep -r "$*" .
-    elif [ "$#" == "2" ]
-    then
-        grep -r "$1" "$2"
+    if [ $# -ne 1 ]; then
+        echo "please spicify a time in minutes to delay shutdown"
     else
-        echo ">.<"
-    fi
-}
-
-function f()
-{
-    if [ "$#" == "1" ]
-    then
-    find . -name "$1"
-    else
-        echo ">.<"
-    fi
-}
-
-function cindent()
-{
-    if command_exists indent; then
-        indent -linux *.c
-        indent -linux *.h 2> /dev/null
-        rm *~
-    else
-        echo "indent not found"
+        sudo shutdown -h +$1
     fi
 }
 
