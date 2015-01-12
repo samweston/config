@@ -114,5 +114,16 @@ if version >= 703
     set undoreload=10000
 endif
 
+" GVIM specific.
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 9
+    elseif has("gui_macvim")
+    elseif has("gui_win32")
+        set guifont=Consolas:h8:cDEFAULT
+    endif
+    set lines=60 columns=130
+endif
+
 :set ruler
 :set nopaste               " don't indent blocks of pasted text
