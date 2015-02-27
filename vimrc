@@ -60,6 +60,9 @@ au BufEnter *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
 " Makefile specific
 au BufEnter Makefile,*.mk set noexpandtab
 
+" Python specific
+au BufEnter *.py set tabstop=2 | set shiftwidth=2
+
 "Always show tabs
 set showtabline=2
 
