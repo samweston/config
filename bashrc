@@ -48,7 +48,10 @@ if [ "$color_prompt" = yes ]; then
     else
         COL="31m" # Red
     fi
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;$COL\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] "
+    # Runs before display of prompt. find_git_branch sets the $git_branch
+    # variable.
+    PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;$COL\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \[\033[38;5;81m\]\$git_branch\[\033[01;34m\]\$\[\033[00m\] "
 else
     PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
 fi
@@ -106,11 +109,28 @@ function command_exists()
     type "$1" &> /dev/null ;
 }
 
+function find_git_branch() {
+    git_branch=""
+    if command_exists git; then
+        local branch
+        if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+            if [[ "$branch" == "HEAD" ]]; then
+                branch="detached* "
+            fi
+            local status=$(git status --porcelain 2> /dev/null)
+            if [[ "$status" != "" ]]; then
+                local dirty="*"
+            else
+                local dirty=""
+            fi
+            git_branch="($branch$dirty) "
+        fi
+    fi
+}
+
 #-------------------------------------------------------------
 # Greeting, motd etc...
 #-------------------------------------------------------------
-
-
 
 if [[ $EUID -ne 0 ]]; then
     # Define some colors first:
@@ -169,7 +189,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #-------------------------------------------------------------
-# Programs
+# Utilities
 #-------------------------------------------------------------
 
 function extract()      # Handy Extract Program.
