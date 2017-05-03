@@ -63,6 +63,9 @@ au BufEnter Makefile,*.mk set noexpandtab
 " Python specific
 au BufEnter *.py set tabstop=2 | set shiftwidth=2
 
+" Go specific
+au BufEnter *.go set expandtab!
+
 "Always show tabs
 set showtabline=2
 
