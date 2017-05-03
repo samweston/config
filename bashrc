@@ -82,27 +82,9 @@ export VISUAL=vim
 alias rsynccopy="rsync --partial --progress --append --rsh=ssh -r -h "
 alias rsyncmove="rsync --partial --progress --append --rsh=ssh -r -h --remove-sent-files"
 
-#Make cross compiler tools easier to reach
-alias agcc="arm-linux-gnueabi-gcc"
-alias aobjdump="arm-linux-gnueabi-objdump"
-
-alias compress="tar czvf out.tar.gz" #<inputs>
-
-alias svim="vim"
-
-alias v="vim"
-alias :e="vim"
-alias vs="vim -S"
-
 alias :q="exit"
 
-alias gca="git commit -a"
-alias gcam="git commit -a -m"
-
 alias tmux="tmux attach || tmux new"
-
-#remove dead sym links
-alias rmdeadln="find -L -type l -delete"
 
 function command_exists()
 {
@@ -131,53 +113,6 @@ function find_git_branch() {
 #-------------------------------------------------------------
 # Greeting, motd etc...
 #-------------------------------------------------------------
-
-if [[ $EUID -ne 0 ]]; then
-    # Define some colors first:
-    # TODO work out the proper way of setting OSX terminal colours.
-    if [[ `uname` == 'Darwin' ]]; then
-        RED=''
-        GREEN=''
-        YELLOW=''
-        BLUE=''
-        CYAN=''
-        NC=''              # No Color
-    else
-        RED='\e[1;31m'
-        GREEN='\e[0;32m'
-        YELLOW='\e[0;33m'
-        BLUE='\e[1;34m'
-        CYAN='\e[1;36m'
-        NC='\e[0m'              # No Color
-    fi
-
-    GA='`'
-    echo -e "$GREEN                    ${RED}   (__)    )"
-    echo -e "$GREEN                    ${RED}   (${BLUE}..$RED)   /|\\"
-    echo -e "$GREEN    ____            ${RED}  (${YELLOW}o${RED}_${YELLOW}o${RED})  / | \\"
-    echo -e "$GREEN   / __/__ ___ _    ${RED}  ___) \/,-|,-\\"
-    echo -e "$GREEN  _\ \/ _ $GA/  ' \\\\${RED}   //,-/_\ )  '  '"
-    echo -e "$GREEN /___/\_,_/_/_/_/   ${RED}   (//,-'\\"
-    echo -e "$GREEN                    ${RED}   (  ( . \_"
-    echo -e "$GREEN                    ${BLUE}gnv $RED$GA._\\\(___$GA."
-    echo -e "$GREEN                    ${RED}     '---' _)/"
-    echo -e "$GREEN                    ${RED}          $GA-'"
-
-    # Looks best on a terminal with black background.....
-    echo -e "${CYAN}This is BASH ${RED}${BASH_VERSION%.*}\
-    ${CYAN} - DISPLAY on ${RED}$DISPLAY${NC}"
-    #Show vim version
-    if command_exists vim; then
-        echo -e "${YELLOW}"`vim --version | head -n 1 | sed 's/([^-]*$//'`"${NC}\n"
-    else
-        echo -e "${YELLOW}Oh no VIM is not installed!!${NC}"
-    fi
-    date
-    if command_exists fortune; then
-        fortune -s     # Makes our day a bit more fun.... :-)
-    fi
-    echo ""
-fi
 
 function _exit()        # Function to run upon exit of shell.
 {
@@ -262,17 +197,4 @@ function shutdownin()
         sudo shutdown -h +$1
     fi
 }
-
-#run tmux by default
-#if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ] && [ $(which tmux) ];
-#then
-#    tmux new; exit
-#fi
-
-#Following commands require bash 4
-#if [ "${BASH_VERSION%.*}" \< "3.0" ]; then
-#    echo "You will need to upgrade to version 3.0 \
-#for full programmable completion features."
-#    return
-#fi
 
