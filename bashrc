@@ -171,9 +171,13 @@ function i()
         echo "please specify a program to install"
     else
         if [ -f /etc/redhat-release ]; then
-            sudo yum install $1
+            sudo yum install $@
         elif [ -f /etc/debian_version ]; then
-            sudo apt-get install $1
+            if command_exists apt; then
+                sudo apt install $@
+            else
+                sudo apt-get install $@
+            fi
         else
             echo "package manager not supported"
         fi
