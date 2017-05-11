@@ -20,6 +20,8 @@ if [ "`pwd`/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
     git clone http://github.com/scrooloose/nerdtree.git
     # vim-go
     git clone http://github.com/fatih/vim-go.git
+    # rust.vim
+    git clone --depth=1 https://github.com/rust-lang/rust.vim.git
     cd ../../
 fi
 
