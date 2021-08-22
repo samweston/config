@@ -44,6 +44,7 @@ set noautowrite         " don't automagically write on :next
 set tabstop=4
 set shiftwidth=4
 set smartindent
+set autoindent
 set smarttab
 set expandtab
 
@@ -61,7 +62,7 @@ au BufEnter *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
 au BufEnter Makefile,*.mk set noexpandtab
 
 " Python specific
-au BufEnter *.py set tabstop=2 | set shiftwidth=2
+au BufEnter *.py set tabstop=4 | set shiftwidth=4 | set nosmartindent
 
 " Go specific
 au BufEnter *.go set expandtab!
