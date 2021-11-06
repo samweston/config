@@ -22,6 +22,9 @@ HISTFILESIZE=20000000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# 日本語の"　"（u+3000） -> " "
+bind '"\343\200\200":" "'
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
