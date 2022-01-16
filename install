@@ -2,7 +2,9 @@
 
 # Set up config files
 
+######################
 # VIM
+######################
 rm -f ~/.vimrc
 ln -s `pwd`/vim/vimrc ~/.vimrc
 # if OSX add .xvimrc for XCode.
@@ -19,29 +21,54 @@ fi
 mkdir -p vim/vim/bundle
 pushd vim/vim/bundle/
 
-# NERDTree
-git -C nerdtree pull || git clone http://github.com/scrooloose/nerdtree.git
-# vim-go
-git -C vim-go pull || git clone http://github.com/fatih/vim-go.git
 # rust.vim
-git -C rust.vim pull || git clone --depth=1 https://github.com/rust-lang/rust.vim.git
+# git -C rust.vim pull || git clone --depth=1 https://github.com/rust-lang/rust.vim.git
 # Powershell
-git -C vim-ps1 pull || git clone https://github.com/PProvost/vim-ps1.git
+# git -C vim-ps1 pull || git clone https://github.com/PProvost/vim-ps1.git
 
 popd
 
+######################
+# Neo Vim
+######################
+# Ensure required directories exist
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/nvim/spell
+
+# Set up symlinked ftplugin directory
+rm -r ~/.config/nvim/ftplugin
+
+# Clean up existing files that will be symlinked.
+rm -f ~/.config/nvim/init.vim
+rm -f ~/.config/nvim/spell/en.utf-8.add
+
+# Symlink the files
+ln -s `pwd`/nvim/init.vim ~/.config/nvim/init.vim
+ln -s `pwd`/nvim/spell/en.utf-8.add ~/.config/nvim/spell/en.utf-8.add
+
+# Symlink directories
+ln -s `pwd`/nvim/ftplugin ~/.config/nvim/
+
+######################
 # BASH
+######################
 rm -f ~/.bashrc
 ln -s `pwd`/bashrc ~/.bashrc
 
+######################
 # TMUX
+######################
 rm -f ~/.tmux.conf
 ln -s `pwd`/tmux.conf ~/.tmux.conf
 
+######################
 # GIT
+######################
 rm -f ~/.gitconfig
 ln -s `pwd`/gitconfig ~/.gitconfig
 
+######################
 # XRESOURCES
+######################
 rm -f ~/.Xresources
 ln -s `pwd`/Xresources ~/.Xresources
