@@ -4,20 +4,20 @@
 
 # VIM
 rm -f ~/.vimrc
-ln -s `pwd`/vimrc ~/.vimrc
+ln -s `pwd`/vim/vimrc ~/.vimrc
 # if OSX add .xvimrc for XCode.
 if [[ `uname` == 'Darwin' ]]; then
     rm -f ~/.xvimrc
-    ln -s `pwd`/vimrc ~/.xvimrc
+    ln -s `pwd`/vim/vimrc ~/.xvimrc
 fi
-if [ "`pwd`/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
+if [ "`pwd`/vim/vim" != "`readlink ~/.vim`" ] || [ "$1" = "-f" ]; then
     rm -r ~/.vim
-    ln -s `pwd`/vim ~/.vim
+    ln -s `pwd`/vim/vim ~/.vim
 fi
 
 #rm -rf vim/bundle
-mkdir -p vim/bundle
-pushd vim/bundle/
+mkdir -p vim/vim/bundle
+pushd vim/vim/bundle/
 
 # NERDTree
 git -C nerdtree pull || git clone http://github.com/scrooloose/nerdtree.git

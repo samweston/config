@@ -6,7 +6,7 @@ call pathogen#infect()
 :colorscheme elflord
 :set cursorline " show cursor line
 :set cursorcolumn " show cursor column
-":set spell
+:set nospell
 ":filetype plugin on
 ":filetype indent on
 
@@ -56,13 +56,13 @@ au BufEnter *.tex,*.bib set tabstop=2 | set shiftwidth=2 | set spell
 
 " SQL specific
 au BufRead,BufNewFile *.prc setfiletype sql
-au BufEnter *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
+au BufEnter,BufNewFile *.sql,*.prc,*.pas set tabstop=2 | set shiftwidth=2
 
 " Makefile specific
-au BufEnter Makefile,*.mk set noexpandtab
+au BufEnter,BufNewFile Makefile,*.mk set noexpandtab
 
 " Python specific
-au BufEnter *.py set tabstop=4 | set shiftwidth=4 | set nosmartindent
+au BufEnter,BufNewFile *.py set tabstop=4 | set shiftwidth=4 | set nosmartindent
 
 " Go specific
 au BufEnter *.go set expandtab!
